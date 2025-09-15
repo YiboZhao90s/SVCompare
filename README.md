@@ -6,9 +6,9 @@ Compare structural variants calling from 2 studies
 The goal is to compare these 2 variant lists in various aspects.
 
 # file path
-/scratch/gen1/yz735/HGSVC/GRCh38 ## Plender_Data (GRCh38)
-/scratch/gen1/yz735/HGSVC/CHM13 ## Plender_Data (T2T-CHM13)
-/rfs/TobinGroup/yz735/transfer ## Transfer Folder from HPC to PC
+- /scratch/gen1/yz735/HGSVC/GRCh38 ## Plender_Data (GRCh38)
+- /scratch/gen1/yz735/HGSVC/CHM13 ## Plender_Data (T2T-CHM13)
+- /rfs/TobinGroup/yz735/transfer ## Transfer Folder from HPC to PC
 
 
 # Merge Plender_Data
