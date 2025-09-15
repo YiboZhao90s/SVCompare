@@ -5,3 +5,13 @@ Compare structural variants calling from 2 studies
 
 The goal is to compare these 2 variant lists in various aspects.
 
+# file path
+/scratch/gen1/yz735/HGSVC/GRCh38 ## Plender_Data (GRCh38)
+/scratch/gen1/yz735/HGSVC/CHM13 ## Plender_Data (T2T-CHM13)
+/rfs/TobinGroup/yz735/transfer ## Transfer Folder from HPC to PC
+
+
+# Merge Plender_Data
+cd /scratch/gen1/yz735/HGSVC/GRCh38
+module load bcftools/1.16-kjo5veq
+bcftools concat -a -Oz -o variants_GRCh38_merged_HGSVC.vcf.gz *vcf.gz
