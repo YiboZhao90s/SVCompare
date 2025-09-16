@@ -9,9 +9,22 @@ The goal is to compare these 2 variant lists in various aspects.
 - /scratch/gen1/yz735/HGSVC/GRCh38 ## Plender_Data (GRCh38)
 - /scratch/gen1/yz735/HGSVC/CHM13 ## Plender_Data (T2T-CHM13)
 - /rfs/TobinGroup/yz735/transfer ## Transfer Folder from HPC to PC
-
-
+  
 # Merge Plender_Data
-cd /scratch/gen1/yz735/HGSVC/GRCh38
+cd /scratch/gen1/yz735/HGSVC/GRCh38  
+module load bcftools/1.16-kjo5veq  
+bcftools concat -a -Oz -o variants_GRCh38_merged_HGSVC.vcf.gz *vcf.gz  
+
+# Check overlapped samples // overlap_samples.R
+module load bcftools/1.16-kjo5veq  
+bcftools query -l variants_GRCh38_merged_HGSVC.vcf.gz > plender_samples.txt  
+- 65 plender samples
+bcftools query -l chr11_1kgp_imputed_vep.vcf.gz > lucy_samples.txt
+- 3202 lucy samples (*merged with short read? shouldn't be 100?*)
+grep -Fxf plender_samples.txt lucy_samples.txt > overlap_samples.txt
+- 63 overlapped samples
+
+# Trim Lucy_Data and Plender_Data
 module load bcftools/1.16-kjo5veq
-bcftools concat -a -Oz -o variants_GRCh38_merged_HGSVC.vcf.gz *vcf.gz
+bcftools view -S overlap_samples.txt -Oz -o variants_GRCh38_merged_trimmed_HGSVC.vcf.gz variants_GRCh38_merged_HGSVC.vcf.gz
+bcftools view -S overlap_samples.txt -Oz -o chr11_1kgp_imputed_vep_trimmed.vcf.gz chr11_1kgp_imputed_vep.vcf.gz
