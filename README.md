@@ -24,7 +24,23 @@ bcftools query -l chr11_1kgp_imputed_vep.vcf.gz > lucy_samples.txt
 grep -Fxf plender_samples.txt lucy_samples.txt > overlap_samples.txt  
 - 63 overlapped samples
 
-# Trim Lucy_Data and Plender_Data
+# Trim Lucy_Data and Plender_Data for overlapped samples
 module load bcftools/1.16-kjo5veq  
 bcftools view -S overlap_samples.txt -Oz -o variants_GRCh38_merged_trimmed_HGSVC.vcf.gz variants_GRCh38_merged_HGSVC.vcf.gz  
 bcftools view -S overlap_samples.txt -Oz -o chr11_1kgp_imputed_vep_trimmed.vcf.gz chr11_1kgp_imputed_vep.vcf.gz  
+
+bcftools index -t variants_GRCh38_merged_trimmed_HGSVC.vcf.gz  
+bcftools index -t chr11_1kgp_imputed_vep_trimmed.vcf.gz  
+
+# Trim Lucy_Data and Plender_Data for Mucin regions (GRCh38)
+- MUC6: Chromosome 11: 1,012,823-1,036,718
+- MUC2: Chromosome 11: 1,074,875-1,110,511
+- MUC5AC: Chromosome 11: 1,157,953-1,201,138
+- MUC5B: Chromosome 11: 1,223,066-1,262,172
+module load bcftools/1.16-kjo5veq  
+bcftools view -r chr1:1012823-1262172 -Oz -o variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz variants_GRCh38_merged_trimmed_HGSVC.vcf.gz  
+bcftools view -r chr1:1012823-1262172 -Oz -o chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz chr11_1kgp_imputed_vep_trimmed.vcf.gz
+
+bcftools index -t variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz
+bcftools index -t chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
+
