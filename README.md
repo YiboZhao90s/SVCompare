@@ -37,10 +37,16 @@ bcftools index -t chr11_1kgp_imputed_vep_trimmed.vcf.gz
 - MUC2: Chromosome 11: 1,074,875-1,110,511
 - MUC5AC: Chromosome 11: 1,157,953-1,201,138
 - MUC5B: Chromosome 11: 1,223,066-1,262,172
-module load bcftools/1.16-kjo5veq  
-bcftools view -r chr1:1012823-1262172 -Oz -o variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz variants_GRCh38_merged_trimmed_HGSVC.vcf.gz  
-bcftools view -r chr1:1012823-1262172 -Oz -o chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz chr11_1kgp_imputed_vep_trimmed.vcf.gz
 
+module load bcftools/1.16-kjo5veq  
+bcftools view -r chr11:1012823-1262172 -Oz -o variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz variants_GRCh38_merged_trimmed_HGSVC.vcf.gz  
+bcftools view -r chr11:1012823-1262172 -Oz -o chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz chr11_1kgp_imputed_vep_trimmed.vcf.gz  
 bcftools index -t variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz
 bcftools index -t chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
+
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz > Plender_variants.txt  
+- 4518 variants in Plender_variants
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  > Lucy_variants.txt
+- 9479 variants in Lucy_variants
+
 
