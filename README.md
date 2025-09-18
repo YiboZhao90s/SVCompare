@@ -45,8 +45,8 @@ bcftools index -t variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz
 bcftools index -t chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
 
 bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz > Plender_variants.txt  
-- 4518 variants in Plender_variants
-bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  > Lucy_variants.txt
-- 9479 variants in Lucy_variants
+- 4518 variants in Plender_variants  
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  > Lucy_variants.txt  
+- 9479 variants in Lucy_variants  
 
 
