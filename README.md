@@ -50,4 +50,16 @@ bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' variants_GRCh38_merged_trimmed_MU
 bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  > Lucy_variants.txt  
 - 9479 variants in Lucy_variants  
 
+# Check Overlapped Variants
+module load bcftools/1.16-kjo5veq  
+bcftools isec -p isec_out variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  
+cd isec_out  
+- 0000.vcf: for records private to	variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz
+- 0001.vcf: for records private to	chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
+- 0002.vcf: for records from variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz shared by both	variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
+- 0003.vcf: for records from chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz shared by both	variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz
+
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' 0002.vcf >overlapped_variants.txt  
+wc overlapped_variants.txt  
+- 2745 overlapped variants  
 
