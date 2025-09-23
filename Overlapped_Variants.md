@@ -59,14 +59,15 @@
 - number of multiallelic SNP sites: 4
 
 # Merge 2 Sets
-## bcftools concat -a chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz -Oz -o merged_MUC.vcf.gz
-## bcftools index -t merged_MUC.vcf.gz
-## bcftools view -r chr11:1157593-1201138 merged_MUC.vcf.gz -Oz -o merged_MUC_MUC5AC.vcf.gz
-## bcftools index merged_MUC_MUC5AC.vcf.gz
-## bcftools stats merged_MUC_MUC5AC.vcf.gz > merged_MUC_MUC5AC_stats.txt
-- number of records: 2606
-- number of SNPs: 2148
-- number of indels: 426
-- number of others: 32
-- number of multiallelic sites: 4
+## bcftools concat -a chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz variants_GRCh38_merged_trimmed_MUC_HGSVC.vcf.gz -Oz -o merged_MUC.vcf.gz  
+- concat just appends one VCF on the other one. it does not check coordinates so this will result duplicates
+- we need to remove duplicates using the following code:
+## bcftools sort -Oz -o merged_MUC_sorted.vcf.gz merged_MUC.vcf.gz
+## bcftools norm -d both -Oz -o merged_MUC_sorted_dedup.vcf.gz merged_MUC_sorted.vcf.gz
+## bcftools index merged_MUC_sorted_dedup.vcf.gz
+
+## bcftools view -r chr11:1157593-1201138 merged_MUC_sorted_dedup.vcf.gz -Oz -o merged_MUC_sorted_dedup_MUC5AC.vcf.gz
+## bcftools index merged_MUC_sorted_dedup_MUC5AC.vcf.gz
+## bcftools stats merged_MUC_sorted_dedup_MUC5AC.vcf.gz > merged_MUC_sorted_dedup_MUC5AC_stats.txt
+
 
