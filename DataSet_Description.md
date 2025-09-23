@@ -9,3 +9,8 @@ plot-vcfstats -p outdir plender_stats.txt
 ## Lucy_Data
 bcftools stats chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz > lucy_stats.txt  
 plot-vcfstats -p outdir lucy_stats.txt  
+
+## Check missing rate for variants
+module load vcftools/0.1.14-uowdqmf
+vcftools --gzvcf  chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  --missing-site
+awk '$5 > 0' out.lmiss > lucy_missing_data.txt
