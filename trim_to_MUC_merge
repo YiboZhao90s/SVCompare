@@ -9,3 +9,6 @@ bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' variants_GRCh38_merged_trimmed_MU
 - 4518 variants in Plender_variants  
 bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\n' chr11_1kgp_imputed_vep_trimmed_MUC.vcf.gz  > Lucy_variants.txt  
 - 9479 variants in Lucy_variants  
+
+## merge
+bcftools sort -Oz -o merged_MUC_sorted.vcf.gz merged_MUC.vcf.gz
