@@ -2,15 +2,15 @@
 
 ## Data Overview
 5 sequence centres
-- gs://fc-aou-datasets-controlled/v8/wgs/long_read/BCM/
-- gs://fc-aou-datasets-controlled/v8/wgs/long_read/BI/
+- gs://fc-aou-datasets-controlled/v8/wgs/long_read/BCM/ --- ont, sequel2e, revio
+- gs://fc-aou-datasets-controlled/v8/wgs/long_read/BI/ --- revio, sequel2e
 - gs://fc-aou-datasets-controlled/v8/wgs/long_read/HA/
 - gs://fc-aou-datasets-controlled/v8/wgs/long_read/JHU/
 - gs://fc-aou-datasets-controlled/v8/wgs/long_read/UW/
 
 4 Techniques
 - ONT
-- PacBio squel2, revio, sequel2e
+- PacBio: squel2, revio, sequel2e
 
 ## Main Workflow 
 This is an exploranary analysis to see what variants were called from different techniques, and compare the lists with the 1KG merged list of MUC5AC.  
