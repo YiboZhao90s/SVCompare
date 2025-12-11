@@ -7,3 +7,6 @@ bcftools view -r chr11:1137953-1282172 merged_MUC_sorted_dedup.vcf.gz -Oz -o mer
 bcftools index merged_MUC_sorted_dedup_MUC5AC_MUC5B.vcf.gz
 bcftools stats merged_MUC_sorted_dedup_MUC5AC_MUC5B.vcf.gz > merged_MUC_sorted_dedup_MUC5AC_MUC5B_stats.txt
 ## 5054 variants for 63 samples
+
+module load vcftools/0.1.14-rni73ax
+vcftools --gzvcf merged_MUC_sorted_dedup_MUC5AC_MUC5B.vcf.gz --freq --out merged_MUC_sorted_dedup_MUC5AC_MUC5B
