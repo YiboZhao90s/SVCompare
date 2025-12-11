@@ -14,8 +14,14 @@
 
 ## Main Workflow 
 This is an exploranary analysis to see what variants were called from different techniques, and compare the lists with the 1KG merged list of MUC5AC.  
-Since uploading job to the serve takes quite a long time and I have not got familiar with the system. I copied them into work disk first then run vcf fromt here. This takes longer time but will make sure everything runs properly.  
-I created a large work disk of 1TB to make sure the VCF files can be save properly.  
+*Since uploading job to the serve takes quite a long time and I have not got familiar with the system. I copied them into work disk first then run vcf fromt here. This takes longer time but will make sure everything runs properly.  
+I created a large work disk of 1TB to make sure the VCF files can be save properly.*
+
+1. Install vcftools from Terminal environment (sh_install_vcftools.sh)
+2. Copy .vcf.bgz and .vcf.bgz.tbi files from remote disk to working disk (AllofUs.sh)
+3. Run vcftools --freq to extract MAF and variant list
+4. Trim for --chr11
+5. Download _chr11.frq file into local laptop
 
 
 
