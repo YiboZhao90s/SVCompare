@@ -16,7 +16,7 @@ Plender_data: /data/gen1/yz735/SV_explore/GRCh38
 4. trim_to_MUC_merge.sh // trim webster_data and plender_data to keep only MUC region and merge them (chr11:1012823-1262172)
 5. trim_merge_MUC5AC_QC.sh // trim the merged MUC file to MUC5AC region only, and QC (chr11:1157953-1201138)
 
-# Merge with All of Us long-read seq data (details see ReadMe_Overlapped_Variants.md)
+# Merge with All of Us long-read seq data (details see ReadMe_MergeAll.md)
 *variant lists were derived from VCF files saved in All of Us workbench (See AllofUs.md and AllofUs.sh)*
 1. Reformat the .frq file and save individual variant list (R_frq_process.R)
 2. Check overlap across the variant lists using coordinates and alleles (R_Merge_1KG_AllofUs.R)
