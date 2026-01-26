@@ -1,13 +1,14 @@
 # Merge 1KG variants
 We have long-read seq of the 1KG cohort from 2 sources:
 1. Lucy Webster merged 30X short-read WGS and ONT long-read seq from top 100 subjects, and imputed structural variants in the whole 1KG cohort
-2. Liz Plender used HGSVC phase 3 ONT data on 65 1KG subjects (https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections//HGSVC3/release/Variant_Calls/1.0/)
+2. Liz Plender used HGSVC phase 3 ONT data on 65 1KG subjects
+wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections//HGSVC3/release/Variant_Calls/1.0/
 
-Here I will merge these 2 sources and extract variants in the *MUC5AC* region
+Here I merged these 2 sources and extract variants in the *MUC5AC* region
 
 ## Source file path
-Webster_data: /data/gen1/yz735/SV_explore/chr11_1kgp_imputed_vep.vcf.gz*  
-Plender_data: /data/gen1/yz735/SV_explore/GRCh38  
+Webster_data: /data/gen1/yz735/mucinSV/chr11_1kgp_imputed_vep.vcf.gz  
+Plender_data: /data/gen1/yz735/mucinSV/plender  
 
 ## Main Workflow
 1. merge_plender_data.sh // Merge all vcfs (for different variant types) into variants_GRCh38_merged_HGSVC.vcf.gz  
